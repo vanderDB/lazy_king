@@ -4,7 +4,6 @@ import com.company.dto.Person;
 import com.company.services.PersonClassificationService;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Main {
 
@@ -37,10 +36,8 @@ public class Main {
             var personClassificationService = new PersonClassificationService();
             personClassificationService.classifyPersons(pollResults);
 
-            var resultedList = personClassificationService.getAllPersons().stream().filter(person -> Objects.equals(0, person.getIerarhieLevel())).toList();
-            resultedList.forEach(person -> {
-                person.Print();
-            });
+            var resultedList = personClassificationService.findPersonsByIerarhieLevel(0);
+            resultedList.forEach(Person::print);
         }
     }
 

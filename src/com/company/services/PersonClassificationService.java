@@ -5,6 +5,7 @@ import com.company.dto.Person;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import static java.util.Objects.isNull;
 
@@ -27,6 +28,11 @@ public class PersonClassificationService {
     public List<Person> getAllMasters() {
 
         return this.masters;
+    }
+
+    public List<Person> findPersonsByIerarhieLevel(int level) {
+
+        return getAllPersons().stream().filter(person -> Objects.equals(0, person.getIerarhieLevel())).toList();
     }
 
     public void classifyPersons(List<String> stringWithPersons) {

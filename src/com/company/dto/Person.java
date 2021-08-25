@@ -41,19 +41,15 @@ public class Person {
         return currentLevel;
     }
 
-    public void Print() {
+    public void print() {
         var level = getIerarhieLevel()*4;
-        var spaces = "";
-        for(int i = 0 ; i< level; i++) {
-            spaces = spaces + " ";
-        }
-        System.out.print(spaces);
+        System.out.print(" ".repeat(level));
 
         System.out.println(name + String.format("(servants count: %s, level: %s)", servants.size(), getIerarhieLevel()));
 
         if (servants.size() > 0){
             servants.sort(Comparator.comparing(Person::getName));
-            servants.forEach(Person::Print);
+            servants.forEach(Person::print);
         }
     }
 
@@ -65,6 +61,4 @@ public class Person {
                 ", isKing=" + isKing +
                 '}';
     }
-
-
 }
